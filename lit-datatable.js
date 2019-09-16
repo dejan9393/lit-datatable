@@ -195,7 +195,8 @@ class LitDatatable extends LitElement {
     [...this.table].forEach((line, lineNumber) => {
       if (lineNumber >= (this.data.length)) {
         this.cleanEventsOfTr(line);
-        this.shadowRoot.querySelector('tbody').removeChild(line.element);
+        const parentNode = line.element.parentNode;
+        parentNode && parentNode.removeChild(line.element);
         this.table.splice(lineNumber, 1);
       }
     });
